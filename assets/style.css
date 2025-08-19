@@ -1,0 +1,308 @@
+:root {
+  --summer-red: #FF6B6B;
+  --summer-green: #4ECDC4;
+  --summer-yellow: #FFD93D;
+  --summer-bg: #F7FFF7;
+  --summer-text: #1A535C;
+  --radius: 12px;
+}
+
+/* 1) 軽いリセット / 微調整 */
+* {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "M PLUS Rounded 1c", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic",
+    sans-serif;
+  color: var(--summer-text);
+  background: linear-gradient(180deg, var(--summer-bg) 0%, #FFFFFF 82%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.45;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 2) レイアウト基礎: container / main wrapper */
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+main.container {
+  max-width: 980px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 1.25rem;
+}
+
+/* main 内直下のカード基礎 */
+main.container > * {
+  background: rgba(255, 255, 255, 0.82);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem;
+  box-shadow: 0 12px 30px rgba(26, 83, 92, 0.06);
+  border: 1px solid rgba(26, 83, 92, 0.04);
+  backdrop-filter: blur(3px);
+}
+
+/* 3) タイトル（h1 / .lead） */
+h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  margin: 0 0 0.9rem;
+  color: var(--summer-text);
+  letter-spacing: .02em;
+}
+h1::before {
+  content: "🍉 ";
+  display: inline-block;
+  margin-right: .3ch;
+}
+.lead {
+  text-align: center;
+  margin: -0.25rem 0 1.2rem;
+  color: rgba(26, 83, 92, .78);
+  font-weight: 600;
+  font-size: .98rem;
+}
+
+/* 4) グリッド / 画像 / figcaption */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+  align-items: start;
+}
+
+/* 画像カード */
+figure {
+  margin: 0;
+  padding: .8rem;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.9));
+  border: 1px solid rgba(26,83,92,0.04);
+  box-shadow: 0 10px 24px rgba(26,83,92,0.06);
+}
+figure img,
+#preview img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.04);
+  box-shadow: 0 6px 18px rgba(26,83,92,0.06);
+}
+figcaption {
+  margin-top: .55rem;
+  font-size: .88rem;
+  color: rgba(26,83,92,0.66);
+  text-align: center;
+}
+
+/* 5) 右カラム（section）とブロックスタイル */
+section {
+  display: flex;
+  flex-direction: column;
+  gap: .9rem;
+}
+
+/* 共通スコア行 */
+section p {
+  margin: 0;
+  padding: .6rem .75rem;
+  border-radius: 12px;
+  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.02));
+  color: var(--summer-text);
+}
+
+/* 小見出し（strong） */
+section p strong {
+  display: block;
+  font-size: .9rem;
+  opacity: .85;
+  margin-bottom: .35rem;
+  font-weight: 700;
+}
+
+/* 1: 自己評価（淡いグリーン） */
+section p:nth-of-type(1) {
+  background: linear-gradient(180deg, rgba(78,205,196,.12), rgba(78,205,196,.06));
+  border: 1px solid rgba(78,205,196,.25);
+  box-shadow: 0 8px 18px rgba(78,205,196,.10);
+  padding: .9rem 1rem;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 1.9rem; /* 数字サイズ目安 */
+  color: #0c575f;
+}
+section p:nth-of-type(1) strong {
+  font-size: .9rem;
+  color: #0c575f;
+  font-weight: 700;
+}
+
+/* 2: AI評価（淡いレッド） */
+section p:nth-of-type(2) {
+  background: linear-gradient(180deg, rgba(255,107,107,.12), rgba(255,107,107,.06));
+  border: 1px solid rgba(255,107,107,.28);
+  box-shadow: 0 10px 22px rgba(255,107,107,.12);
+  padding: 1rem 1.1rem;
+  border-radius: 16px;
+  font-weight: 900;
+  font-size: 2.2rem; /* 数字をさらに大きく */
+  color: #8a1e1e;
+}
+section p:nth-of-type(2) strong {
+  color: #8a1e1e;
+  font-weight: 800;
+}
+
+/* 3: コメント（ノート風・破線） */
+section p:nth-of-type(3) {
+  background: linear-gradient(180deg, rgba(26,83,92,.03), rgba(26,83,92,.02));
+  border: 1px dashed rgba(26,83,92,.18);
+  padding: .9rem 1rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(26,83,92,.9);
+}
+
+/* 別の画像で試す（最後の a を丸いグラデボタンに） */
+section a:last-child {
+  display: inline-block;
+  margin-top: .4rem;
+  padding: .7rem 1.2rem;
+  border-radius: 999px;
+  background-image: linear-gradient(90deg, var(--summer-green), var(--summer-yellow));
+  color: #083036;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 8px 18px rgba(78,205,196,0.18);
+  transition: transform .16s ease, box-shadow .16s ease, opacity .12s ease;
+}
+section a:last-child:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(78,205,196,0.22);
+}
+section a:last-child:active {
+  transform: translateY(-1px);
+  opacity: .98;
+}
+
+/* 6) フォーム要素微調整（既存の良さを維持） */
+label {
+  display: block;
+  margin: .65rem 0;
+  font-weight: 600;
+  color: rgba(26,83,92,.9);
+}
+input[type="file"] {
+  display: block;
+  margin-top: .45rem;
+}
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--summer-green);
+}
+output#selfRangeValue {
+  display: inline-block;
+  min-width: 36px;
+  text-align: center;
+  font-weight: 800;
+  margin-left: .6rem;
+}
+
+/* 数値入力風（もし存在する場合） */
+input[type="number"] {
+  width: 110px;
+  padding: .45rem .6rem;
+  border-radius: 8px;
+  border: 1px solid rgba(26,83,92,0.08);
+  background: #fff;
+  color: var(--summer-text);
+}
+
+/* メイン送信ボタンは既存のグラデを活かす */
+button {
+  padding: .7rem 1.05rem;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  color: #083036;
+  font-weight: 700;
+  background-image: linear-gradient(90deg, var(--summer-green), var(--summer-yellow));
+  box-shadow: 0 8px 18px rgba(78,205,196,0.18);
+  transition: transform .16s ease, box-shadow .16s ease, opacity .12s ease;
+}
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(78,205,196,0.18);
+}
+
+/* 7) 衝突回避 / 最終上書き（Tailwindなどと併用されても中央寄せを確保） */
+main.container {
+  max-width: 980px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 1.25rem;
+}
+/* より具体的なセレクタで後勝ちさせる（軽度の優先度上げ） */
+body main.container > * {
+  border-radius: var(--radius);
+}
+
+/* 8) レスポンシブ（≤700px で1カラム化、数字縮小） */
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  main.container {
+    padding: .9rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  section p:nth-of-type(1) {
+    font-size: 1.6rem;
+  }
+
+  section p:nth-of-type(2) {
+    font-size: 1.9rem;
+  }
+
+  section {
+    gap: .7rem;
+  }
+
+  figure {
+    padding: .6rem;
+  }
+
+  figure img,
+  #preview img {
+    max-width: 240px;
+    margin: 0 auto;
+  }
+}
+
+/* 微調整: 非常に小さな画面向け */
+@media (max-width: 420px) {
+  section a:last-child {
+    padding: .6rem .9rem;
+    font-size: .95rem;
+  }
+  output#selfRangeValue {
+    min-width: 28px;
+    font-size: .95rem;
+  }
+}
